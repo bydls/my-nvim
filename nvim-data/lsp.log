@@ -1,0 +1,16 @@
+[START][2025-09-22 14:17:02] LSP logging initiated
+[START][2025-09-22 14:21:31] LSP logging initiated
+[START][2025-09-22 14:24:14] LSP logging initiated
+[START][2025-09-22 14:26:19] LSP logging initiated
+[START][2025-09-22 15:32:23] LSP logging initiated
+[START][2025-09-22 15:49:26] LSP logging initiated
+[START][2025-09-22 15:52:11] LSP logging initiated
+[START][2025-09-22 15:56:57] LSP logging initiated
+[START][2025-09-22 16:19:22] LSP logging initiated
+[START][2025-09-22 16:22:12] LSP logging initiated
+[START][2025-09-22 16:23:01] LSP logging initiated
+[START][2025-09-22 16:45:15] LSP logging initiated
+[WARN][2025-09-22 16:45:15] D:/Neovim/nvim-win64/share/nvim/runtime/lua/vim/lsp/log.lua:151	'vim.lsp: method "textDocument/selectionRange" is not supported by any server activated for this buffer'
+[START][2025-09-22 16:49:47] LSP logging initiated
+[START][2025-09-22 16:52:38] LSP logging initiated
+[START][2025-09-22 17:06:19] LSP logging initiated
