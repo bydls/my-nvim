@@ -1,54 +1,61 @@
+-- lua/plugins.lua
+-- ========================================
 -- lazy.nvim 安装
+-- ========================================
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git","clone","--filter=blob:none",
-    "git@github.com:folke/lazy.nvim.git",lazypath
+    "git", "clone", "--filter=blob:none",
+    "git@github.com:folke/lazy.nvim.git", lazypath
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+
   -- 主题 & 图标
-  { "git@github.com:folke/tokyonight.nvim.git", config = function() vim.cmd.colorscheme("tokyonight") end },
-  { "git@github.com:kyazdani42/nvim-web-devicons.git" },
+  { "folke/tokyonight.nvim", config = function() vim.cmd.colorscheme("tokyonight") end },
+  { "kyazdani42/nvim-web-devicons" },
 
   -- 文件树
-  { "git@github.com:nvim-tree/nvim-tree.lua.git", dependencies = { "git@github.com:kyazdani42/nvim-web-devicons.git" }, config = function()
-      require("nvim-tree").setup({ renderer = { icons = { show = { file=true, folder=true, git=true } } } })
+  { "nvim-tree/nvim-tree.lua",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup({
+        renderer = { icons = { show = { file=true, folder=true, git=true } } }
+      })
     end
   },
 
   -- Treesitter
-  { "git@github.com:nvim-treesitter/nvim-treesitter.git", run=":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
 
   -- LSP & 补全
-  { "git@github.com:neovim/nvim-lspconfig.git" },
-  { "git@github.com:hrsh7th/nvim-cmp.git", dependencies={
-      "git@github.com:hrsh7th/cmp-nvim-lsp.git",
-      "git@github.com:hrsh7th/cmp-buffer.git",
-      "git@github.com:hrsh7th/cmp-path.git",
-      "git@github.com:L3MON4D3/LuaSnip.git"
+  { "neovim/nvim-lspconfig" },
+  { "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "L3MON4D3/LuaSnip",
     }
   },
 
   -- Telescope
-  { "git@github.com:nvim-telescope/telescope.nvim.git", dependencies={"git@github.com:nvim-lua/plenary.nvim.git"} },
+  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
   -- Git
-  { "git@github.com:lewis6991/gitsigns.nvim.git" },
+  { "lewis6991/gitsigns.nvim" },
 
-  -- Go
-  { "git@github.com:ray-x/go.nvim.git", dependencies={"git@github.com:ray-x/guihua.lua.git"}, config=function() require("go").setup() end },
+  -- Go 开发
+  { "ray-x/go.nvim", dependencies = { "ray-x/guihua.lua" }, config = function() require("go").setup() end },
 
   -- Shell LSP
-  { "git@github.com:bash-lsp/bash-language-server.git" },
+  { "bash-lsp/bash-language-server" },
 
-  -- Python LSP
-  { "git@github.com:mfussenegger/nvim-lsp-python.git" },
-
-  -- DAP
-  { "git@github.com:mfussenegger/nvim-dap.git" },
-  { "git@github.com:rcarriga/nvim-dap-ui.git", dependencies={"git@github.com:mfussenegger/nvim-dap.git"} },
-  { "git@github.com:leoluz/nvim-dap-go.git", dependencies={"git@github.com:mfussenegger/nvim-dap.git"} },
+  -- DAP 调试
+  { "mfussenegger/nvim-dap" },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+  { "leoluz/nvim-dap-go", dependencies = { "mfussenegger/nvim-dap" } },
+  { "mfussenegger/nvim-dap-python" },  -- Python 调试
 })
