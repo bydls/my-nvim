@@ -1,11 +1,18 @@
--- init.lua
--- 设置 leader
-vim.g.mapleader = " "
-
--- 加载模块
+-- 基础选项
 require("options")
+
+-- 快捷键
 require("keymaps")
+
+-- 插件管理
 require("plugins")
-require("lsp")
-require("dap")
+
+-- UI 配置
 require("ui")
+
+-- LSP 配置
+require("lsp")
+
+-- DAP 配置
+require("dap")
+

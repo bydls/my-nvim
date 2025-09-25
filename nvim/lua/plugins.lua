@@ -14,7 +14,16 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
   -- 主题 & 图标
-  { "folke/tokyonight.nvim", config = function() vim.cmd.colorscheme("tokyonight") end },
+{ 
+  "folke/tokyonight.nvim",
+  lazy = false,  -- 保证启动就加载
+  config = function()
+    vim.opt.termguicolors = true
+    vim.opt.background = "dark"
+    vim.cmd.colorscheme("tokyonight")
+  end
+},
+
   { "kyazdani42/nvim-web-devicons" },
 
   -- 文件树
